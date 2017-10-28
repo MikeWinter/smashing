@@ -1,18 +1,17 @@
 require 'test_helper'
 
 class DownloaderTest < Minitest::Test
-
   def test_get_json_requests_and_parses_content
     endpoint = 'http://somehost.com/file.json'
     response = '{ "name": "value" }'
-    FakeWeb.register_uri(:get, endpoint, body: response)
+    stub_request(:get, endpoint).to_return(body: response)
     JSON.stubs(:parse).with(response).once
 
     Dashing::Downloader.get_json(endpoint)
   end
 
   def test_get_json_raises_on_bad_request
-    FakeWeb.register_uri(:get, 'http://dead-host.com/', status: '404')
+    stub_request(:get, 'http://dead-host.com/').to_return(status: 404)
 
     assert_raises(OpenURI::HTTPError) do
       Dashing::Downloader.get_json('http://dead-host.com/')

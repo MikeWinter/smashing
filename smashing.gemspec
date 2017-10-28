@@ -30,6 +30,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency('haml', '~> 4.0.4')
   s.add_development_dependency('minitest', '~> 5.2.0')
   s.add_development_dependency('mocha', '~> 0.14.0')
-  s.add_development_dependency('fakeweb', '~> 1.3.0')
+  s.add_development_dependency('webmock', '~> 2.3.2')
   s.add_development_dependency('simplecov', '~> 0.8.2')
 end
