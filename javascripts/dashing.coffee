@@ -1,5 +1,6 @@
 #= require jquery
 #= require es5-shim
+#= require ie-thunk.js
 #= require batman
 #= require batman.jquery
 
