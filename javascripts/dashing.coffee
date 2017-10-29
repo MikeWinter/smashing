@@ -51,7 +51,7 @@ Dashing.params = Batman.URI.paramsFromQuery(window.location.search.slice(1));
 class Dashing.Widget extends Batman.View
   constructor:  ->
     # Set the view path
-    @constructor::source = Batman.Filters.underscore(@constructor.name)
+    @constructor::source = Batman.Filters.underscore(@getName())
     super
 
     @mixin($(@node).data())
@@ -89,6 +89,13 @@ class Dashing.Widget extends Batman.View
   select: (data) =>
     # Widgets override this to transform data before it is applied to the model
     return data
+
+  getName: =>
+    if @constructor.name?
+      @constructor.name
+    else
+      results = /function\s+([^(]+)\s*\(/.exec(@constructor.toString())
+      if (results && results.length > 1) then results[1].trim() else ""
 
 Dashing.AnimatedValue =
   get: Batman.Property.defaultAccessor.get
