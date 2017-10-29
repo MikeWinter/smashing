@@ -151,7 +151,7 @@ def format_event(body, name=nil)
 end
 
 def latest_events
-  settings.history.inject("") do |str, (id, body)|
+  settings.history.inject("") do |str, (_, body)|
     str << body
   end
 end
