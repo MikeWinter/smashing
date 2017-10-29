@@ -1,6 +1,7 @@
 #= require jquery
 #= require es5-shim
 #= require ie-thunk.js
+#= require eventsource.min.js
 #= require batman
 #= require batman.jquery
 
